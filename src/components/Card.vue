@@ -19,6 +19,10 @@ export default {
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
+  transition: 0.3s transform ease-in-out;
+  &:hover {
+    transform: scaleY(1.2) scaleX(1.1);
+  }
   .avatar {
     width: 100%;
   }

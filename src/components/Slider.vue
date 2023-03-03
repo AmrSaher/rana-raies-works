@@ -62,11 +62,11 @@ export default {
 
 <style lang="scss" scoped>
 .slider {
-  .section-title {
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    opacity: 0.9;
+  @media (min-width: 768px) {
+    .swiper,
+    swiper-container {
+      overflow: visible;
+    }
   }
 }
 </style>

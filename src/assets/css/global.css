@@ -29,9 +29,32 @@ body {
   background-color: var(--bg-color);
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .section {
   width: 100%;
   padding: 20px;
 }
+.section .section-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
 /* End Main */
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* End Scroll Bar */

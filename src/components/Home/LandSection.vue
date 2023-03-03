@@ -18,7 +18,7 @@
     </button>
     <div class="content">
       <div class="about-rana">
-        <img src="@/assets/hero.jpg" class="hero" alt="Rana Raies" />
+        <img src="@/assets/rana.jpg" class="hero" alt="Rana Raies" />
         <div class="details">
           <h2 class="name">Rana Raies</h2>
           <p class="desc">
@@ -109,7 +109,7 @@ export default {
   .btn {
     position: absolute;
     top: 70px;
-    right: 20px;
+    right: 10px;
     font-size: 30px;
     border: none;
     background-color: transparent;
@@ -149,7 +149,7 @@ export default {
     gap: 30px;
     z-index: 9;
     .hero {
-      width: 200px;
+      width: 250px;
       border: 3px solid var(--main-color);
       clip-path: polygon(
         0% 15%,
@@ -212,7 +212,7 @@ export default {
     }
   }
   @media (max-width: 768px) {
-    height: 700px;
+    height: 750px;
   }
 }
 </style>
