@@ -10,13 +10,13 @@
           <router-link to="/">Home</router-link>
         </li>
         <li>
-          <router-link to="/movies">Movies</router-link>
+          <router-link to="/works/movies">Movies</router-link>
         </li>
         <li>
-          <router-link to="/series">Series</router-link>
+          <router-link to="/works/series">Series</router-link>
         </li>
         <li>
-          <router-link to="/about-me">About Me</router-link>
+          <a href="/#about" class="not">About Me</a>
         </li>
         <li>
           <router-link to="/my-list">My List</router-link>
@@ -91,7 +91,7 @@ export default {
         font-size: 16px;
         transition: 0.3s color ease-in-out;
         &:hover,
-        &.active {
+        &.active:not(.not) {
           color: var(--main-color);
         }
       }

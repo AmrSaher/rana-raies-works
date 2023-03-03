@@ -1,5 +1,5 @@
 <template>
-  <section class="section about-me-section">
+  <section class="section about-me-section" id="about">
     <h2 class="section-title">About Me</h2>
     <div class="content">
       <img src="@/assets/amr.jpg" class="avatar" alt="Amr Saher" />

@@ -55,7 +55,7 @@ export default {
   name: "LandSection",
   data() {
     return {
-      mute: true,
+      mute: false,
       currentTrailer: 1,
       trailers: [
         {
