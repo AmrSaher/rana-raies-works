@@ -42,7 +42,7 @@ export default {
       color: #ddd;
     }
     .avatar {
-      width: 300px;
+      width: 250px;
       border: 3px solid var(--main-color);
       clip-path: polygon(
         20% 0%,
