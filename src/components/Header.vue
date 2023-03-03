@@ -18,6 +18,9 @@
         <li>
           <router-link to="/about-me">About Me</router-link>
         </li>
+        <li>
+          <router-link to="/my-list">My List</router-link>
+        </li>
       </ul>
     </nav>
     <button class="toggle" @click="isActive = !isActive">
@@ -37,7 +40,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 10) {
         this.color = true;
       } else {
         this.color = false;

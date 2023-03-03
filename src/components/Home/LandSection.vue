@@ -1,5 +1,5 @@
 <template>
-  <section class="section land-section">
+  <section class="section hero-section">
     <video
       :src="trailers[currentTrailer - 1].video"
       class="trailer"
@@ -7,11 +7,14 @@
       autoplay
       @ended="nextVideo()"
     ></video>
-    <button class="mute" @click="mute = !mute">
+    <button class="btn mute" @click="mute = !mute">
       <i
         class="bi"
         :class="{ 'bi-volume-down': !mute, 'bi-volume-mute': mute }"
       ></i>
+    </button>
+    <button class="btn add-to-list">
+      <i class="bi bi-plus"></i>
     </button>
     <div class="content">
       <div class="about-rana">
@@ -88,7 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.land-section {
+.hero-section {
   padding: 0;
   position: relative;
   display: flex;
@@ -103,7 +106,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
   }
-  .mute {
+  .btn {
     position: absolute;
     top: 70px;
     right: 20px;
@@ -112,8 +115,8 @@ export default {
     background-color: transparent;
     cursor: pointer;
     color: var(--text-color);
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: #00000044;
     border-radius: 50%;
     border: 1px solid var(--main-color);
@@ -122,8 +125,16 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: var(--main-color);
+    }
+    &.add-to-list {
+      top: 130px;
+    }
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
     }
   }
   .content {
