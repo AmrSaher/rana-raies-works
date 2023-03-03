@@ -1,14 +1,21 @@
 <template>
-  <div class="card" :class="{ active: !$isMobile() }">
+  <div class="card" :class="{ active: !isActive }">
     <img src="@/assets/avatar1.webp" :src="img" class="avatar" alt="avatar" />
     <h3 class="name">{{ name }}</h3>
   </div>
 </template>
 
 <script>
+import { isMobile, isTablet } from 'mobile-device-detect';
+
 export default {
   name: "Card",
   props: ["img", "name", "link"],
+  data() {
+    return {
+        isActive: !isMobile || !isTablet
+    }
+  }
 };
 </script>
 

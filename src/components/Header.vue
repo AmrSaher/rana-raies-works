@@ -1,7 +1,7 @@
 <template>
   <header class="header" :class="{ color: color }">
     <div class="brand">
-      <h1>RRW {{ $isMobile() }}</h1>
+      <h1>RRW</h1>
       <span>Rana Raies Works</span>
     </div>
     <nav class="links" :class="{ active: isActive }">
