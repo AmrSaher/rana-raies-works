@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ active: !$isMobile() }">
     <img src="@/assets/avatar1.webp" :src="img" class="avatar" alt="avatar" />
     <h3 class="name">{{ name }}</h3>
   </div>
@@ -20,8 +20,8 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transition: 0.3s transform ease-in-out;
-  &:hover {
-    transform: scaleY(1.2) scaleX(1.1);
+  &.active:hover {
+    transform: scaleY(1.1) scaleX(1.05);
   }
   .avatar {
     width: 100%;

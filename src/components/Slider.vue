@@ -1,5 +1,5 @@
 <template>
-  <section class="section slider">
+  <section class="section slider" :class="{ active: !$isMobile() }">
     <h2 class="section-title">{{ title }}</h2>
     <swiper
       :slides-per-view="1"
@@ -62,10 +62,10 @@ export default {
 
 <style lang="scss" scoped>
 .slider {
-  @media (min-width: 768px) {
+  &.active {
     .swiper,
     swiper-container {
-      overflow: visible;
+      overflow: unset;
     }
   }
 }
