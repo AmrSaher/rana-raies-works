@@ -1,21 +1,14 @@
 <template>
-  <div class="card" :class="{ active: !isActive }">
+  <div class="card">
     <img src="@/assets/avatar1.webp" :src="img" class="avatar" alt="avatar" />
     <h3 class="name">{{ name }}</h3>
   </div>
 </template>
 
 <script>
-import { isMobile, isTablet } from 'mobile-device-detect';
-
 export default {
   name: "Card",
   props: ["img", "name", "link"],
-  data() {
-    return {
-        isActive: !isMobile || !isTablet
-    }
-  }
 };
 </script>
 
@@ -27,9 +20,6 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transition: 0.3s transform ease-in-out;
-  &.active:hover {
-    transform: scaleY(1.1) scaleX(1.05);
-  }
   .avatar {
     width: 100%;
   }
