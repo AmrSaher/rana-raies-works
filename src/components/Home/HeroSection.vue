@@ -1,6 +1,7 @@
 <template>
   <section class="section hero-section">
     <video
+      v-if="trailers[currentTrailer - 1].video"
       :src="trailers[currentTrailer - 1].video"
       class="trailer"
       :muted="mute"
@@ -52,7 +53,7 @@ import video3 from "@/assets/video2.mp4";
 import video4 from "@/assets/video3.mp4";
 
 export default {
-  name: "LandSection",
+  name: "HeroSection",
   data() {
     return {
       mute: false,
@@ -96,15 +97,16 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  height: 650px;
+  height: 700px;
   background-color: black;
   overflow: hidden;
   .trailer {
-    height: 100%;
+    height: 120vh;
+    min-height: 100%;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
   }
   .btn {
     position: absolute;

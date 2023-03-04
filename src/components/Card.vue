@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="openWork">
     <img src="@/assets/avatar1.webp" :src="img" class="avatar" alt="avatar" />
     <h3 class="name">{{ name }}</h3>
   </div>
@@ -9,6 +9,11 @@
 export default {
   name: "Card",
   props: ["img", "name", "link"],
+  methods: {
+    openWork() {
+      this.$router.push(this.link ?? '/work/1');
+    }
+  }
 };
 </script>
 

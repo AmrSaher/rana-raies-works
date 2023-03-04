@@ -1,6 +1,6 @@
 <template>
   <div class="page home">
-    <LandSection />
+    <HeroSection />
     <Slider title="Continue Watching" />
     <Slider title="My List" />
     <AboutMeSection />
@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import LandSection from "@/components/Home/LandSection.vue";
+import HeroSection from "@/components/Home/HeroSection.vue";
 import Slider from "@/components/Slider.vue";
 import AboutMeSection from "@/components/Home/AboutMeSection.vue";
 
 export default {
   name: "HomeView",
   components: {
-    LandSection,
+    HeroSection,
     Slider,
     AboutMeSection,
   },
