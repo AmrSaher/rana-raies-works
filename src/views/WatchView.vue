@@ -1,26 +1,36 @@
 <template>
-  <div class="page watch">
-    <iframe
-      src="https://vk.com/video_ext.php?oid=786380097&id=456239152&hash=83387938839401d8"
-      frameborder="0"
-      allowfullscreen="1"
-      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-    ></iframe>
-  </div>
+  <div class="page watch" v-html="iframe"></div>
 </template>
 
 <script>
+import { db } from "@/firebase";
+import { doc, getDoc } from "firebase/firestore";
+
 export default {
   name: "WatchView",
+  computed: {
+    seasonId() {
+      return this.$route.params.sid;
+    },
+    epsoideIndex() {
+      return this.$route.params.ep;
+    },
+  },
+  data() {
+    return {
+      iframe: "",
+    };
+  },
+  mounted() {
+    this.getIframe();
+  },
+  methods: {
+    async getIframe() {
+      const seasonRef = doc(db, "seasons", this.seasonId);
+      const seasonSnap = await getDoc(seasonRef);
+      this.iframe = seasonSnap.data().epsoides[this.epsoideIndex - 1];
+      console.log(this.iframe);
+    },
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-.watch {
-  iframe {
-    margin-top: 70px;
-    width: 100%;
-    height: calc(100vh - 70px);
-  }
-}
-</style>

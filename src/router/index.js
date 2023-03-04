@@ -21,7 +21,7 @@ const routes = [
     component: WorkView,
   },
   {
-    path: "/watch/:id",
+    path: "/watch/:sid/:ep",
     name: "watch",
     component: WatchView,
   },

@@ -17,22 +17,30 @@
       <i class="bi bi-plus"></i>
     </button>
     <div class="content">
-      <select class="season">
-        <option value="season1" selected>Season 1</option>
-        <option value="season2">Season 2</option>
+      <select class="season" v-model="season">
+        <option
+          v-for="(season, i) in work.seasons"
+          :key="season.id"
+          :value="i + 1"
+        >
+          {{ season.name }}
+        </option>
       </select>
-      <h2 class="name">موضوع عائلى</h2>
+      <h2 class="name">{{ work.name }}</h2>
       <ul class="categories">
-        <li><span></span>Comedy</li>
-        <li><span></span>Drama</li>
+        <li v-for="(cat, i) in work.categories" :key="i">
+          <span></span>{{ cat }}
+        </li>
       </ul>
-      <p class="desc">
-        يجبر بينو على العودة إلى القاهرة من أجل تسوية ميراثه، ولكن سرعان ما يصاب
-        بالصدمة عند معرفته بأن ما يرثه سيعرضه للمغامرات المرعبة.
-      </p>
+      <p class="desc">{{ work.description }}</p>
       <hr />
       <div class="watch-btn">
-        <router-link to="/">
+        <router-link
+          :to="{
+            name: 'watch',
+            params: { sid: work.seasons[season - 1].id, ep: 1 },
+          }"
+        >
           <i class="bi bi-play-fill"></i>
         </router-link>
         <span>Watch Now</span>
@@ -44,10 +52,18 @@
 <script>
 export default {
   name: "DetailsSection",
+  props: ["work"],
   data() {
     return {
-      mute: false,
+      mute: true,
+      season: 1,
+      link: "",
     };
+  },
+  watch: {
+    season(v) {
+      this.$emit("getEpsoides", v);
+    },
   },
 };
 </script>

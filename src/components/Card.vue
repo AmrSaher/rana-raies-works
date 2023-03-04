@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="openWork">
-    <img src="@/assets/avatar1.webp" :src="img" class="avatar" alt="avatar" />
+    <img :src="img" class="avatar" alt="avatar" />
     <h3 class="name">{{ name }}</h3>
   </div>
 </template>

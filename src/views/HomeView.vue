@@ -1,8 +1,8 @@
 <template>
   <div class="page home">
     <HeroSection />
-    <Slider title="Continue Watching" />
-    <Slider title="My List" />
+    <Slider v-if="false" title="Continue Watching" />
+    <Slider v-if="false" title="My List" />
     <AboutMeSection />
   </div>
 </template>

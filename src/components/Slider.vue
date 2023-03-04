@@ -18,20 +18,8 @@
       :modules="modules"
       navigation
     >
-      <swiper-slide>
-        <Card name="موضوع عائلى الحلقة الاولى الموسم الاول" />
-      </swiper-slide>
-      <swiper-slide>
-        <Card name="موضوع عائلى الحلقة الاولى الموسم الاول" />
-      </swiper-slide>
-      <swiper-slide>
-        <Card name="موضوع عائلى الحلقة الاولى الموسم الاول" />
-      </swiper-slide>
-      <swiper-slide>
-        <Card name="موضوع عائلى الحلقة الاولى الموسم الاول" />
-      </swiper-slide>
-      <swiper-slide>
-        <Card name="موضوع عائلى الحلقة الاولى الموسم الاول" />
+      <swiper-slide v-for="(card, i) in cards" :key="i">
+        <Card :name="card.name" :img="card.img" :link="card.link" />
       </swiper-slide>
     </swiper>
   </section>

@@ -1,6 +1,6 @@
 <template>
   <div class="page works">
-    <CardList />
+    <CardList :works="works" />
   </div>
 </template>
 
@@ -15,6 +15,14 @@ export default {
   computed: {
     cat() {
       return this.$route.params.cat;
+    },
+    works() {
+      if (this.cat == "movies" || this.cat == "series") {
+        let type = this.cat == "movies" ? "movie" : "series";
+        return this.$store.getters.works.filter((work) => {
+          if (work.type == type) return true;
+        });
+      }
     },
   },
 };

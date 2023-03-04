@@ -14,5 +14,8 @@ export default {
     Header,
     Footer,
   },
+  mounted() {
+    this.$store.dispatch("getWorks");
+  },
 };
 </script>

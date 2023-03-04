@@ -1,10 +1,11 @@
 <template>
+  <Loader v-if="works.length == 0" />
   <section class="section hero-section">
     <video
-      v-if="trailers[currentTrailer - 1].video"
-      :src="trailers[currentTrailer - 1].video"
+      :src="trailer"
       class="trailer"
       :muted="mute"
+      playsinline
       autoplay
       @ended="nextVideo()"
     ></video>
@@ -34,11 +35,11 @@
       <div class="last-works">
         <ul>
           <li
-            v-for="trailer in trailers"
-            :key="trailer.id"
-            v-html="trailer.name"
-            :class="{ active: trailer.id == currentTrailer }"
-            @click="currentTrailer = trailer.id"
+            v-for="(work, i) in works"
+            :key="i"
+            v-html="work.textLogo"
+            :class="{ active: i == currentTrailer }"
+            @click="currentTrailer = i"
           ></li>
         </ul>
       </div>
@@ -47,46 +48,38 @@
 </template>
 
 <script>
-import video1 from "@/assets/video.mp4";
-import video2 from "@/assets/video1.mp4";
-import video3 from "@/assets/video2.mp4";
-import video4 from "@/assets/video3.mp4";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "HeroSection",
   data() {
     return {
-      mute: false,
-      currentTrailer: 1,
-      trailers: [
-        {
-          id: 1,
-          video: video1,
-          name: "موضوع <br>عائلى",
-        },
-        {
-          id: 2,
-          video: video2,
-          name: "ازمة منصتف <br>العمر",
-        },
-        {
-          id: 3,
-          video: video3,
-          name: "الحرامى",
-        },
-        {
-          id: 4,
-          video: video4,
-          name: "جزيرة <br>غمام",
-        },
-      ],
+      mute: true,
+      currentTrailer: 0,
     };
+  },
+  components: {
+    Loader,
+  },
+  computed: {
+    works() {
+      return this.$store.getters.works.slice(0, 3);
+    },
+    trailer() {
+      return this.$store.getters.heroTrailer;
+    },
   },
   methods: {
     nextVideo() {
-      if (this.trailers[this.currentTrailer]) this.currentTrailer++;
-      else this.currentTrailer = 1;
+      if (this.works[this.currentTrailer + 1]) this.currentTrailer++;
+      else this.currentTrailer = 0;
+      this.$store.dispatch("getFile", this.works[this.currentTrailer].trailer);
     },
+    // getFile(location) {
+    //   getDownloadURL(ref(storage, location)).then((url) => {
+    //     this.$store.commit("heroTrailer", url);
+    //   });
+    // },
   },
 };
 </script>

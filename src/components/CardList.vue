@@ -1,14 +1,13 @@
 <template>
   <section class="section card-list">
     <div class="cards">
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
-      <Card name="موضوع عائلى" />
+      <Card
+        v-for="work in works"
+        :key="work.id"
+        :img="work.avatar"
+        :name="work.name"
+        :link="'/work/' + work.id"
+      />
     </div>
   </section>
 </template>
@@ -21,6 +20,7 @@ export default {
   components: {
     Card,
   },
+  props: ["works"],
 };
 </script>
 
