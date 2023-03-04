@@ -19,7 +19,7 @@
           <a href="/#about" class="not">About Me</a>
         </li>
         <li>
-          <router-link to="/my-list">My List</router-link>
+          <router-link to="/works/my-list">My List</router-link>
         </li>
       </ul>
     </nav>

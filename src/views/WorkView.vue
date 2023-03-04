@@ -6,15 +6,15 @@
 </template>
 
 <script>
-import DetailsSection from '@/components/Work/DetailsSection.vue';
+import DetailsSection from "@/components/Work/DetailsSection.vue";
 import Slider from "@/components/Slider.vue";
 
 export default {
   name: "WorkView",
   components: {
     DetailsSection,
-    Slider
-  }
+    Slider,
+  },
 };
 </script>
 

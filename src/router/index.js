@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import WorksView from "@/views/WorksView.vue";
 import WorkView from "@/views/WorkView.vue";
+import WatchView from "@/views/WatchView.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/work/:id",
     name: "work",
     component: WorkView,
+  },
+  {
+    path: "/watch/:id",
+    name: "watch",
+    component: WatchView,
   },
 ];
 
