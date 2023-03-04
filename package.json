@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap-icons": "^1.10.3",
     "core-js": "^3.8.3",
+    "firebase": "^9.17.2",
     "mobile-device-detect": "^0.4.3",
     "swiper": "^9.1.0",
     "vue": "^3.2.13",
