@@ -1,7 +1,7 @@
 <template>
   <section class="section details-section">
     <video
-      src="@/assets/video.mp4"
+      :src="work.trailer"
       class="trailer"
       :muted="mute"
       autoplay

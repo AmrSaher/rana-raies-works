@@ -11,7 +11,7 @@ export default {
   props: ["img", "name", "link"],
   methods: {
     openWork() {
-      this.$router.push(this.link ?? "/watch/1");
+      this.$router.push(this.link);
     },
   },
 };

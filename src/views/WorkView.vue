@@ -29,7 +29,7 @@ export default {
     DetailsSection,
     Slider,
     Loader,
-    Footer
+    Footer,
   },
   data() {
     return {

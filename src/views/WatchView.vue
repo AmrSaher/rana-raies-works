@@ -29,7 +29,27 @@ export default {
       const seasonRef = doc(db, "seasons", this.seasonId);
       const seasonSnap = await getDoc(seasonRef);
       this.iframe = seasonSnap.data().epsoides[this.epsoideIndex - 1];
-      console.log(this.iframe);
+      this.saveEpsoide(seasonSnap.data().work_id);
+    },
+    saveEpsoide(workId) {
+      let epsoides = JSON.parse(localStorage.getItem("continuelist")) || [];
+      let ep = `${workId}|${this.seasonId}|${this.epsoideIndex}`;
+      let isExist = this.isExist(epsoides, workId);
+      if (isExist[0]) {
+        epsoides[isExist[1]] = ep;
+      } else {
+        epsoides.push(ep);
+      }
+      localStorage.setItem("continuelist", JSON.stringify(epsoides));
+    },
+    isExist(epsoides, workId) {
+      let isExist = false;
+      let key = null;
+      epsoides.forEach((ep, i) => {
+        if (ep.split("|")[0] == workId) isExist = true;
+        key = i;
+      });
+      return [isExist, key];
     },
   },
 };

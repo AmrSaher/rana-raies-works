@@ -2,7 +2,8 @@
   <Loader v-if="works.length == 0" />
   <section class="section hero-section">
     <video
-      :src="trailer"
+      v-if="works[currentTrailer]"
+      :src="works[currentTrailer].trailer"
       class="trailer"
       :muted="mute"
       playsinline
@@ -65,15 +66,11 @@ export default {
     works() {
       return this.$store.getters.works.slice(0, 3);
     },
-    trailer() {
-      return this.$store.getters.heroTrailer;
-    },
   },
   methods: {
     nextVideo() {
       if (this.works[this.currentTrailer + 1]) this.currentTrailer++;
       else this.currentTrailer = 0;
-      this.$store.dispatch("getFile", this.works[this.currentTrailer].trailer);
     },
     addToList() {
       let ids = JSON.parse(localStorage.getItem("mylist")) || [];
