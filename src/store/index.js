@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { storage } from "@/firebase";
 import { ref, getDownloadURL } from "firebase/storage";
@@ -26,19 +26,21 @@ export default createStore({
     },
   },
   actions: {
-    async getWorks({ state }) {
+    async getWorks() {
       const querySnapshot = await getDocs(collection(db, "works"));
+      let works = [];
       querySnapshot.forEach((doc) => {
-        state.works.push({
+        works.push({
           id: doc.id,
           ...doc.data(),
         });
       });
-      this.dispatch("getFile", state.works[0].trailer);
+      this.commit("works", works);
+      this.dispatch("getFile", this.getters.works[0].trailer);
     },
     getFile({ state }, location) {
       getDownloadURL(ref(storage, location)).then((url) => {
-        state.heroTrailer = url;
+        this.commit("heroTrailer", url);
       });
     },
   },

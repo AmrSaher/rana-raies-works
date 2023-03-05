@@ -16,9 +16,6 @@
           <router-link to="/works/series">Series</router-link>
         </li>
         <li>
-          <a href="/#about" class="not">About Me</a>
-        </li>
-        <li>
           <router-link to="/works/my-list">My List</router-link>
         </li>
       </ul>

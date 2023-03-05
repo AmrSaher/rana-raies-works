@@ -15,7 +15,7 @@
         :class="{ 'bi-volume-down': !mute, 'bi-volume-mute': mute }"
       ></i>
     </button>
-    <button class="btn add-to-list">
+    <button class="btn add-to-list" @click="addToList()">
       <i class="bi bi-plus"></i>
     </button>
     <div class="content">
@@ -75,11 +75,15 @@ export default {
       else this.currentTrailer = 0;
       this.$store.dispatch("getFile", this.works[this.currentTrailer].trailer);
     },
-    // getFile(location) {
-    //   getDownloadURL(ref(storage, location)).then((url) => {
-    //     this.$store.commit("heroTrailer", url);
-    //   });
-    // },
+    addToList() {
+      let ids = JSON.parse(localStorage.getItem("mylist")) || [];
+      if (ids.includes(this.works[this.currentTrailer].id)) {
+        ids.splice(ids.indexOf(this.works[this.currentTrailer].id), 1);
+      } else {
+        ids.push(this.works[this.currentTrailer].id);
+      }
+      localStorage.setItem("mylist", JSON.stringify(ids));
+    },
   },
 };
 </script>

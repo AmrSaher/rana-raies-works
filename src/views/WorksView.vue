@@ -1,5 +1,6 @@
 <template>
   <div class="page works">
+    <p v-if="works.length == 0">Empty</p>
     <CardList :works="works" />
   </div>
 </template>
@@ -22,6 +23,16 @@ export default {
         return this.$store.getters.works.filter((work) => {
           if (work.type == type) return true;
         });
+      } else if (this.cat == "my-list") {
+        let ids = JSON.parse(localStorage.getItem("mylist")) || [];
+        return this.$store.getters.works
+          .filter((work) => {
+            if (ids.includes(work.id)) return true;
+          })
+          .map((work) => {
+            work.link = "/work/" + work.id;
+            return work;
+          });
       }
     },
   },
@@ -31,5 +42,10 @@ export default {
 <style lang="scss" scoped>
 .works {
   padding-top: 70px;
+  p {
+    color: #ddd;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

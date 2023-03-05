@@ -4,7 +4,7 @@
       <Card
         v-for="work in works"
         :key="work.id"
-        :img="work.avatar"
+        :img="work.avatar || work.img"
         :name="work.name"
         :link="'/work/' + work.id"
       />

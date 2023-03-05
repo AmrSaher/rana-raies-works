@@ -12,12 +12,14 @@
     />
     <Slider title="Epsoides" :cards="cards" />
   </div>
+  <Footer />
 </template>
 
 <script>
 import DetailsSection from "@/components/Work/DetailsSection.vue";
 import Slider from "@/components/Slider.vue";
 import Loader from "@/components/Loader.vue";
+import Footer from "@/components/Footer.vue";
 import { db } from "@/firebase";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
@@ -27,11 +29,12 @@ export default {
     DetailsSection,
     Slider,
     Loader,
+    Footer
   },
   data() {
     return {
       work: {
-        seasons: [{ id: "sss" }],
+        seasons: [{ id: "_" }],
       },
       cards: [],
       season: 1,

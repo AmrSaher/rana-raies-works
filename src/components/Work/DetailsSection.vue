@@ -13,7 +13,7 @@
         :class="{ 'bi-volume-down': !mute, 'bi-volume-mute': mute }"
       ></i>
     </button>
-    <button class="btn add-to-list">
+    <button class="btn add-to-list" @click="addToList">
       <i class="bi bi-plus"></i>
     </button>
     <div class="content">
@@ -63,6 +63,17 @@ export default {
   watch: {
     season(v) {
       this.$emit("getEpsoides", v);
+    },
+  },
+  methods: {
+    addToList() {
+      let ids = JSON.parse(localStorage.getItem("mylist")) || [];
+      if (ids.includes(this.work.id)) {
+        ids.splice(ids.indexOf(this.work.id), 1);
+      } else {
+        ids.push(this.work.id);
+      }
+      localStorage.setItem("mylist", JSON.stringify(ids));
     },
   },
 };

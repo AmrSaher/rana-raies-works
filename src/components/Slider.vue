@@ -19,7 +19,7 @@
       navigation
     >
       <swiper-slide v-for="(card, i) in cards" :key="i">
-        <Card :name="card.name" :img="card.img" :link="card.link" />
+        <Card :name="card.name" :img="card.img || card.avatar" :link="card.link" />
       </swiper-slide>
     </swiper>
   </section>
