@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+public/data.json
+src/views/UploadDataView.vue
 
 # local env files
 .env.local

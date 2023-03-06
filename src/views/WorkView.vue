@@ -68,7 +68,7 @@ export default {
       this.work = {
         id: workSnap.id,
         ...workSnap.data(),
-        seasons: seasons.reverse(),
+        seasons: seasons,
       };
       this.generateCards();
       this.loader = false;

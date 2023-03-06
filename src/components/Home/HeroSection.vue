@@ -10,12 +10,6 @@
       autoplay
       @ended="nextVideo()"
     ></video>
-    <router-link
-      :to="{ name: 'work', params: { id: works[currentTrailer].id } }"
-      class="btn play"
-    >
-      <i class="bi bi-play"></i>
-    </router-link>
     <button class="btn mute" @click="mute = !mute">
       <i
         class="bi"
@@ -23,8 +17,22 @@
       ></i>
     </button>
     <button class="btn add-to-list" @click="addToList()">
-      <i class="bi bi-plus"></i>
+      <i
+        v-if="works[currentTrailer]"
+        class="bi"
+        :class="{
+          'bi-plus': !myList.includes(works[currentTrailer].id),
+          'bi-dash': myList.includes(works[currentTrailer].id),
+        }"
+      ></i>
     </button>
+    <router-link
+      v-if="works[currentTrailer]"
+      :to="{ name: 'work', params: { id: works[currentTrailer].id } }"
+      class="btn play"
+    >
+      <i class="bi bi-play"></i>
+    </router-link>
     <div class="content">
       <div class="about-rana">
         <img src="@/assets/rana.jpg" class="hero" alt="Rana Raies" />
@@ -71,6 +79,9 @@ export default {
   computed: {
     works() {
       return this.$store.getters.works.slice(0, 3);
+    },
+    myList() {
+      return JSON.parse(localStorage.getItem("mylist")) || [];
     },
   },
   methods: {

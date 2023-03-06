@@ -3,6 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import WorksView from "@/views/WorksView.vue";
 import WorkView from "@/views/WorkView.vue";
 import WatchView from "@/views/WatchView.vue";
+import UploadDataView from "@/views/UploadDataView.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/watch/:sid/:ep",
     name: "watch",
     component: WatchView,
+  },
+  {
+    path: "/upload",
+    name: "upload",
+    component: UploadDataView,
   },
 ];
 
