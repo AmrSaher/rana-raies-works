@@ -10,6 +10,12 @@
       autoplay
       @ended="nextVideo()"
     ></video>
+    <router-link
+      :to="{ name: 'work', params: { id: works[currentTrailer].id } }"
+      class="btn play"
+    >
+      <i class="bi bi-play"></i>
+    </router-link>
     <button class="btn mute" @click="mute = !mute">
       <i
         class="bi"
@@ -128,9 +134,19 @@ export default {
     &.add-to-list {
       top: 130px;
     }
+    &.play {
+      top: 190px;
+    }
     @media (max-width: 768px) {
       width: 40px;
       height: 40px;
+      font-size: 25px;
+      &.add-to-list {
+        top: 120px;
+      }
+      &.play {
+        top: 170px;
+      }
     }
   }
   .content {
