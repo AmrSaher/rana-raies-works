@@ -7,6 +7,7 @@
       :cards="continueWatching"
     />
     <Slider v-if="myList.length > 0" title="My List" :cards="myList" />
+    <Slider v-if="lastWorks.length > 0" title="Last Works" :cards="lastWorks" />
     <AboutMeSection />
   </div>
   <Footer />
@@ -15,7 +16,7 @@
 <script>
 import HeroSection from "@/components/Home/HeroSection.vue";
 import Slider from "@/components/Slider.vue";
-import AboutMeSection from "@/components/Home/AboutMeSection.vue";
+import AboutMeSection from "@/components/Home/AboutRanaSection.vue";
 import Footer from "@/components/Footer.vue";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase";
@@ -44,6 +45,17 @@ export default {
           work.link = "/work/" + work.id;
           return work;
         });
+    },
+    lastWorks() {
+      let works = this.$store.getters.works;
+      works.filter((work) => {
+        if (Number(work.created_at) >= 2020) return true;
+      });
+      works.sort((a, b) => {
+        return Number(a.created_at) - Number(b.created_at);
+      });
+      works.reverse();
+      return works;
     },
   },
   mounted() {

@@ -1,17 +1,14 @@
 <template>
-  <section class="section about-me-section" id="about">
-    <h2 class="section-title">About Me</h2>
+  <section class="section about-rana-section" id="about">
+    <h2 class="section-title">About Rana Raies</h2>
     <div class="content">
-      <img src="@/assets/amr.jpg" class="avatar" alt="Amr Saher" />
-      <h3 class="name">Amr Saher</h3>
+      <img src="@/assets/rana.jpg" class="avatar" alt="Rana Raies" />
+      <h3 class="name">Rana Raies</h3>
       <p class="desc">
-        My name is Amr Saher, and I am a 16-year-old programmer who started
-        learning how to code when I was 11. Since then, I have been continuously
-        learning several programming languages, such as Python, PHP, JavaScript,
-        MySQL, HTML, CSS, Sass, Vue.js, Laravel, Django, PyQt5, and more. I have
-        been working as a full-stack web developer for about two years, and I'm
-        always eager to learn and improve my skills in order to become a
-        successful programmer in the future.
+        Egyptian actress born in Cairo who got into the business by chance. Her
+        onscreen debut was in 2017 with two different series, Security Situation
+        with Amr Saad and Ground/Air with Ghada Abdel Razek. She also appeared
+        on other series on Ramadan such as Cuffs S2 (2018), and Baraka (2019).
       </p>
     </div>
   </section>
@@ -19,12 +16,12 @@
 
 <script>
 export default {
-  name: "AboutMeSection",
+  name: "AboutRanaSection",
 };
 </script>
 
 <style lang="scss" scoped>
-.about-me-section {
+.about-rana-section {
   background-image: url(../../assets/bg.png);
   background-position: center;
   background-repeat: no-repeat;

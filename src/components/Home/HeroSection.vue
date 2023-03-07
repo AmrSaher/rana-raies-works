@@ -4,7 +4,7 @@
     <video
       v-if="works[currentTrailer]"
       :src="works[currentTrailer].trailer"
-      :poster="works[currentTrailer].avatar"
+      :poster="works[currentTrailer].poster"
       class="trailer"
       :muted="mute"
       playsinline
@@ -35,7 +35,7 @@
       <i class="bi bi-play"></i>
     </router-link>
     <div class="content">
-      <div class="about-rana">
+      <!-- <div class="about-rana">
         <img src="@/assets/rana.jpg" class="hero" alt="Rana Raies" />
         <div class="details">
           <h2 class="name">Rana Raies</h2>
@@ -47,24 +47,39 @@
             and Baraka (2019).
           </p>
         </div>
-      </div>
+      </div> -->
       <div class="last-works">
-        <ul>
-          <li
+        <swiper
+          :slides-per-view="2"
+          :space-between="20"
+          :breakpoints="{
+            1200: {
+              slidesPerView: 3,
+            },
+          }"
+          :modules="modules"
+          navigation
+        >
+          <swiper-slide
             v-for="(work, i) in works"
             :key="i"
-            v-html="work.textLogo"
             :class="{ active: i == currentTrailer }"
             @click="currentTrailer = i"
-          ></li>
-        </ul>
+          >
+            <img :src="work.logo" :alt="work.name" />
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation } from "swiper";
 import Loader from "@/components/Loader.vue";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default {
   name: "HeroSection",
@@ -72,14 +87,17 @@ export default {
     return {
       mute: true,
       currentTrailer: 0,
+      modules: [Navigation],
     };
   },
   components: {
     Loader,
+    Swiper,
+    SwiperSlide,
   },
   computed: {
     works() {
-      return this.$store.getters.works.slice(0, 3);
+      return this.$store.getters.works.slice(0, 4);
     },
     myList() {
       return JSON.parse(localStorage.getItem("mylist")) || [];
@@ -122,8 +140,8 @@ export default {
   }
   .btn {
     position: absolute;
-    top: 70px;
-    right: 10px;
+    top: 80px;
+    right: 30px;
     font-size: 30px;
     border: none;
     background-color: transparent;
@@ -144,33 +162,34 @@ export default {
       background-color: var(--main-color);
     }
     &.add-to-list {
-      top: 130px;
+      top: 140px;
     }
     &.play {
-      top: 190px;
+      top: 200px;
     }
     @media (max-width: 768px) {
       width: 40px;
       height: 40px;
       font-size: 25px;
+      right: 20px;
       &.add-to-list {
-        top: 120px;
+        top: 130px;
       }
       &.play {
-        top: 170px;
+        top: 180px;
       }
     }
   }
   .content {
     height: 100%;
     padding: 20px;
+    padding-bottom: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     text-align: center;
-    max-width: 500px;
+    max-width: 700px;
     width: 100%;
-    gap: 30px;
     z-index: 9;
     .hero {
       width: 250px;
@@ -198,38 +217,23 @@ export default {
       color: #ddd;
     }
     .last-works {
-      ul {
-        flex-wrap: wrap;
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        row-gap: 20px;
-        justify-content: center;
+      .swiper-wrapper {
         width: 100%;
-        li {
-          font-family: "IBM Plex Sans Arabic", sans-serif;
-          font-size: 20px;
-          white-space: nowrap;
-          cursor: pointer;
-          height: 75px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: 0.3s border ease-in-out;
-          position: relative;
-          &::before {
-            content: "";
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--main-color);
-            transition: 0.3s width ease-in-out;
-            border-radius: 3px;
+        padding: 10px;
+        .swiper-slide {
+          padding: 30px 0;
+          img {
+            height: 60px;
+            cursor: pointer;
+            transition: 0.3s transform ease-in-out;
+            @media (max-width: 700px) {
+              height: 40px;
+            }
           }
-          &.active::before {
-            width: 100%;
+          &.active {
+            img {
+              transform: scale(1.3);
+            }
           }
         }
       }

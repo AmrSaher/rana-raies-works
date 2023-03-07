@@ -61,3 +61,16 @@ body {
   background: #555;
 }
 /* End Scroll Bar */
+
+/* Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--main-color) !important;
+}
+@media (max-width: 700px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+/* End Swiper */

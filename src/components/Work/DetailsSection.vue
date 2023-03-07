@@ -2,7 +2,7 @@
   <section class="section details-section">
     <video
       :src="work.trailer"
-      :poster="work.avatar"
+      :poster="work.poster"
       class="trailer"
       :muted="mute"
       autoplay
@@ -18,6 +18,7 @@
       <i class="bi bi-plus"></i>
     </button>
     <div class="content">
+      <img :src="work.logo" class="logo" :alt="work.name">
       <select class="season" v-model="season">
         <option
           v-for="(season, i) in work.seasons"
@@ -99,8 +100,8 @@ export default {
   }
   .btn {
     position: absolute;
-    top: 70px;
-    right: 10px;
+    top: 80px;
+    right: 30px;
     font-size: 30px;
     border: none;
     background-color: transparent;
@@ -121,11 +122,15 @@ export default {
       background-color: var(--main-color);
     }
     &.add-to-list {
-      top: 130px;
+      top: 140px;
     }
     @media (max-width: 768px) {
       width: 40px;
       height: 40px;
+      right: 20px;
+      &.add-to-list {
+        top: 130px;
+      }
     }
   }
   .content {
@@ -138,6 +143,10 @@ export default {
     justify-content: center;
     align-items: flex-start;
     z-index: 9;
+    .logo {
+      height: 100px;
+      margin-bottom: 10px;
+    }
     .season {
       padding: 8px 10px;
       background-color: var(--bg-color);
