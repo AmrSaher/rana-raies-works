@@ -2,6 +2,7 @@
   <section class="section details-section">
     <video
       :src="work.trailer"
+      :poster="work.avatar"
       class="trailer"
       :muted="mute"
       autoplay

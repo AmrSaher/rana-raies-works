@@ -4,6 +4,7 @@
     <video
       v-if="works[currentTrailer]"
       :src="works[currentTrailer].trailer"
+      :poster="works[currentTrailer].avatar"
       class="trailer"
       :muted="mute"
       playsinline
