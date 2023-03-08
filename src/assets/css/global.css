@@ -67,10 +67,4 @@ body {
 .swiper-button-prev {
   color: var(--main-color) !important;
 }
-@media (max-width: 700px) {
-  .swiper-button-next::before,
-  .swiper-button-prev::before {
-    display: none;
-  }
-}
 /* End Swiper */

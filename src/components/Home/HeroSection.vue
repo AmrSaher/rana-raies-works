@@ -35,19 +35,6 @@
       <i class="bi bi-play"></i>
     </router-link>
     <div class="content">
-      <!-- <div class="about-rana">
-        <img src="@/assets/rana.jpg" class="hero" alt="Rana Raies" />
-        <div class="details">
-          <h2 class="name">Rana Raies</h2>
-          <p class="desc">
-            Egyptian actress born in Cairo who got into the business by chance.
-            Her onscreen debut was in 2017 with two different series, Security
-            Situation with Amr Saad and Ground/Air with Ghada Abdel Razek. She
-            also appeared on other series on Ramadan such as Cuffs S2 (2018),
-            and Baraka (2019).
-          </p>
-        </div>
-      </div> -->
       <div class="last-works">
         <swiper
           :slides-per-view="2"
@@ -57,8 +44,6 @@
               slidesPerView: 3,
             },
           }"
-          :modules="modules"
-          navigation
         >
           <swiper-slide
             v-for="(work, i) in works"
@@ -76,10 +61,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation } from "swiper";
 import Loader from "@/components/Loader.vue";
 import "swiper/css";
-import "swiper/css/navigation";
 
 export default {
   name: "HeroSection",
@@ -87,7 +70,6 @@ export default {
     return {
       mute: true,
       currentTrailer: 0,
-      modules: [Navigation],
     };
   },
   components: {
@@ -191,31 +173,6 @@ export default {
     max-width: 700px;
     width: 100%;
     z-index: 9;
-    .hero {
-      width: 250px;
-      border: 3px solid var(--main-color);
-      clip-path: polygon(
-        0% 15%,
-        15% 15%,
-        15% 0%,
-        85% 0%,
-        85% 15%,
-        100% 15%,
-        100% 85%,
-        85% 85%,
-        85% 100%,
-        15% 100%,
-        15% 85%,
-        0% 85%
-      );
-    }
-    .name {
-      font-size: 20px;
-    }
-    .desc {
-      font-size: 12px;
-      color: #ddd;
-    }
     .last-works {
       .swiper-wrapper {
         width: 100%;
