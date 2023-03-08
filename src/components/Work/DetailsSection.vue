@@ -87,7 +87,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  height: 700px;
+  height: 650px;
   background-color: black;
   overflow: hidden;
   .trailer {
@@ -210,7 +210,7 @@ export default {
     }
   }
   @media (max-width: 768px) {
-    height: 750px;
+    height: 700px;
   }
 }
 </style>
