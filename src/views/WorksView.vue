@@ -24,15 +24,7 @@ export default {
           if (work.type == type) return true;
         });
       } else if (this.cat == "my-list") {
-        let ids = JSON.parse(localStorage.getItem("mylist")) || [];
-        return this.$store.getters.works
-          .filter((work) => {
-            if (ids.includes(work.id)) return true;
-          })
-          .map((work) => {
-            work.link = "/work/" + work.id;
-            return work;
-          });
+        return this.$store.getters.myList;
       }
     },
   },

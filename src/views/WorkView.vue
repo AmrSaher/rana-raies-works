@@ -10,7 +10,7 @@
       "
       :work="work"
     />
-    <Slider title="Epsoides" :cards="cards" />
+    <Slider v-if="work.type == 'series'" title="Epsoides" :cards="cards" />
   </div>
   <Footer />
 </template>
@@ -19,7 +19,7 @@
 import DetailsSection from "@/components/Work/DetailsSection.vue";
 import Slider from "@/components/Slider.vue";
 import Loader from "@/components/Loader.vue";
-import Footer from "@/components/Footer.vue";
+import Footer from "@/components/Main/Footer.vue";
 import { db } from "@/firebase";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 

@@ -1,65 +1,55 @@
 <template>
-  <section class="section details-section">
-    <video
-      :src="work.trailer"
-      :poster="work.poster"
-      class="trailer"
-      :muted="mute"
-      autoplay
-      loop
-    ></video>
-    <button class="btn mute" @click="mute = !mute">
-      <i
-        class="bi"
-        :class="{ 'bi-volume-down': !mute, 'bi-volume-mute': mute }"
-      ></i>
-    </button>
-    <button class="btn add-to-list" @click="addToList">
-      <i class="bi bi-plus"></i>
-    </button>
-    <div class="content">
-      <img :src="work.logo" class="logo" :alt="work.name">
-      <select class="season" v-model="season">
-        <option
-          v-for="(season, i) in work.seasons"
-          :key="season.id"
-          :value="i + 1"
-        >
-          {{ season.name }}
-        </option>
-      </select>
-      <h2 class="name">{{ work.name }}</h2>
-      <ul class="categories">
-        <li v-for="(cat, i) in work.categories" :key="i">
-          <span></span>{{ cat }}
-        </li>
-      </ul>
-      <p class="desc">{{ work.description }}</p>
-      <hr />
-      <div class="watch-btn">
-        <router-link
-          :to="{
-            name: 'watch',
-            params: { sid: work.seasons[season - 1].id, ep: 1 },
-          }"
-        >
-          <i class="bi bi-play-fill"></i>
-        </router-link>
-        <span>Watch Now</span>
-      </div>
+  <video-background
+    :work="work"
+    :playBtn="false"
+    contentStyle="gap: 15px;
+    justify-content: center;
+    align-items: flex-start;"
+  >
+    <img :src="work.logo" class="logo" :alt="work.name" />
+    <select class="season" v-model="season">
+      <option
+        v-for="(season, i) in work.seasons"
+        :key="season.id"
+        :value="i + 1"
+      >
+        {{ season.name }}
+      </option>
+    </select>
+    <h2 class="name">{{ work.name }}</h2>
+    <ul class="categories">
+      <li v-for="(cat, i) in work.categories" :key="i">
+        <span></span>{{ cat }}
+      </li>
+    </ul>
+    <p class="desc">{{ work.description }}</p>
+    <hr />
+    <div class="watch-btn">
+      <router-link
+        :to="{
+          name: 'watch',
+          params: { sid: work.seasons[season - 1].id, ep: 1 },
+        }"
+      >
+        <i class="bi bi-play-fill"></i>
+      </router-link>
+      <span>Watch Now</span>
     </div>
-  </section>
+  </video-background>
 </template>
 
 <script>
+import VideoBackground from "@/components/VideoBackground.vue";
+
 export default {
   name: "DetailsSection",
   props: ["work"],
+  components: {
+    VideoBackground,
+  },
   data() {
     return {
-      mute: true,
       season: 1,
-      link: "",
     };
   },
   watch: {
@@ -67,82 +57,12 @@ export default {
       this.$emit("getEpsoides", v);
     },
   },
-  methods: {
-    addToList() {
-      let ids = JSON.parse(localStorage.getItem("mylist")) || [];
-      if (ids.includes(this.work.id)) {
-        ids.splice(ids.indexOf(this.work.id), 1);
-      } else {
-        ids.push(this.work.id);
-      }
-      localStorage.setItem("mylist", JSON.stringify(ids));
-    },
-  },
 };
 </script>
 
-<style lang="scss" scoped>
-.details-section {
-  padding: 0;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 650px;
-  background-color: black;
-  overflow: hidden;
-  .trailer {
-    height: 120vh;
-    min-height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .btn {
-    position: absolute;
-    top: 80px;
-    right: 30px;
-    font-size: 30px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    color: var(--text-color);
-    width: 50px;
-    height: 50px;
-    background-color: #00000044;
-    border-radius: 50%;
-    border: 1px solid var(--main-color);
-    transition: 0.3s background ease-in-out;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover,
-    &.active {
-      background-color: var(--main-color);
-    }
-    &.add-to-list {
-      top: 140px;
-    }
-    @media (max-width: 768px) {
-      width: 40px;
-      height: 40px;
-      right: 20px;
-      &.add-to-list {
-        top: 130px;
-      }
-    }
-  }
+<style lang="scss">
+.video-background {
   .content {
-    height: 100%;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 9;
     .logo {
       height: 100px;
       margin-bottom: 10px;
@@ -208,9 +128,6 @@ export default {
         }
       }
     }
-  }
-  @media (max-width: 768px) {
-    height: 700px;
   }
 }
 </style>

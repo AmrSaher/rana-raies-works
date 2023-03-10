@@ -17,7 +17,7 @@
 import HeroSection from "@/components/Home/HeroSection.vue";
 import Slider from "@/components/Slider.vue";
 import AboutMeSection from "@/components/Home/AboutRanaSection.vue";
-import Footer from "@/components/Footer.vue";
+import Footer from "@/components/Main/Footer.vue";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase";
 
@@ -36,15 +36,7 @@ export default {
   },
   computed: {
     myList() {
-      let ids = JSON.parse(localStorage.getItem("mylist")) || [];
-      return this.$store.getters.works
-        .filter((work) => {
-          if (ids.includes(work.id)) return true;
-        })
-        .map((work) => {
-          work.link = "/work/" + work.id;
-          return work;
-        });
+      return this.$store.getters.myList;
     },
     lastWorks() {
       let works = this.$store.getters.works;
