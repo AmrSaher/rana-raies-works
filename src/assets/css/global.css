@@ -17,6 +17,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym828.ani),
+    url(https://ani.cursors-4u.net/symbols/sym-9/sym828.png), auto !important;
 }
 ul {
   list-style: none;

@@ -1,6 +1,7 @@
 <template>
   <Loader v-if="works.length == 0" />
   <video-background
+    v-if="works[currentTrailer]"
     :work="works[currentTrailer]"
     :playBtn="true"
     contentStyle="padding-bottom: 30px;
@@ -12,7 +13,11 @@
     <TrailersSlider
       :works="works"
       :currentTrailer="currentTrailer"
-      @setCurrentTrailer="(i) => {currentTrailer = i}"
+      @setCurrentTrailer="
+        (i) => {
+          currentTrailer = i;
+        }
+      "
     />
   </video-background>
 </template>

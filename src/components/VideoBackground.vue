@@ -17,14 +17,7 @@
       ></i>
     </button>
     <button class="btn add-to-list" @click="addToList()">
-      <i
-        v-if="work"
-        class="bi"
-        :class="{
-          'bi-plus': !inList,
-          'bi-dash': inList,
-        }"
-      ></i>
+      <i v-if="work" class="bi bi-plus"></i>
     </button>
     <router-link
       v-if="work && playBtn"
@@ -46,17 +39,14 @@ export default {
   data() {
     return {
       mute: true,
-      inList: false,
     };
   },
   methods: {
     addToList() {
       let ids = JSON.parse(localStorage.getItem("mylist")) || [];
       if (ids.includes(this.work.id)) {
-        this.inList = false;
         ids.splice(ids.indexOf(this.work.id), 1);
       } else {
-        this.inList = true;
         ids.push(this.work.id);
       }
       localStorage.setItem("mylist", JSON.stringify(ids));

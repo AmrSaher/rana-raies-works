@@ -1,5 +1,6 @@
 <template>
   <video-background
+    v-if="work"
     :work="work"
     :playBtn="false"
     contentStyle="gap: 15px;

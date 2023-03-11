@@ -39,15 +39,14 @@ export default {
       return this.$store.getters.myList;
     },
     lastWorks() {
-      let works = this.$store.getters.works;
-      works.filter((work) => {
-        if (Number(work.created_at) >= 2020) return true;
-      });
-      works.sort((a, b) => {
-        return Number(a.created_at) - Number(b.created_at);
-      });
-      works.reverse();
-      return works;
+      return this.$store.getters.works
+        .filter((work) => {
+          if (Number(work.created_at) >= 2020) return true;
+        })
+        .sort((a, b) => {
+          return Number(a.created_at) - Number(b.created_at);
+        })
+        .reverse();
     },
   },
   mounted() {
@@ -58,7 +57,7 @@ export default {
       let epsoides = (
         JSON.parse(localStorage.getItem("continuelist")) || []
       ).reverse();
-      epsoides.map(async (epsoide) => {
+      epsoides.forEach(async (epsoide) => {
         let workId = epsoide.split("|")[0];
         let seasonId = epsoide.split("|")[1];
         let epsoideIndex = epsoide.split("|")[2];
