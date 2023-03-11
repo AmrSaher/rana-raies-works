@@ -5,5 +5,6 @@ import store from "./store";
 
 import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import "@/assets/css/global.css";
+import './registerServiceWorker'
 
 createApp(App).use(store).use(router).mount("#app");
