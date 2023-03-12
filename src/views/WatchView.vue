@@ -41,6 +41,7 @@ export default {
         epsoides.push(ep);
       }
       localStorage.setItem("continuelist", JSON.stringify(epsoides));
+      this.$store.dispatch("getContinueWatchingList");
     },
     isExist(epsoides, workId) {
       let isExist = false;

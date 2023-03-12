@@ -37,23 +37,34 @@ export default {
 
 <style lang="scss" scoped>
 .last-works {
+  width: 100%;
   .swiper-wrapper {
     width: 100%;
     padding: 10px;
     .swiper-slide {
-      padding: 30px 0;
+      padding: 10px 0;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: var(--main-color);
+        transition: 0.3s width ease-in-out;
+        border-radius: 2px;
+      }
       img {
         height: 60px;
         cursor: pointer;
-        transition: 0.3s transform ease-in-out;
         @media (max-width: 700px) {
-          height: 40px;
+          height: 50px;
         }
       }
-      &.active {
-        img {
-          transform: scale(1.3);
-        }
+      &.active::before {
+        width: 50%;
       }
     }
   }

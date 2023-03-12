@@ -8,6 +8,7 @@
       :muted="mute"
       playsinline
       autoplay
+      loop
       @ended="$emit('ended')"
     ></video>
     <button class="btn mute" @click="mute = !mute">
@@ -77,7 +78,7 @@ export default {
   .btn {
     position: absolute;
     top: 80px;
-    right: 30px;
+    right: 20px;
     font-size: 30px;
     border: none;
     background-color: transparent;
@@ -107,7 +108,6 @@ export default {
       width: 40px;
       height: 40px;
       font-size: 25px;
-      right: 20px;
       &.add-to-list {
         top: 130px;
       }
@@ -118,14 +118,13 @@ export default {
   }
   .content {
     height: 100%;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     width: 100%;
     z-index: 9;
   }
   @media (max-width: 768px) {
-    height: 700px;
+    height: 680px;
   }
 }
 </style>

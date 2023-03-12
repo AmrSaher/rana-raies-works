@@ -6,17 +6,8 @@
     </div>
     <nav class="links" :class="{ active: isActive }">
       <ul>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-        <li>
-          <router-link to="/works/movies">Movies</router-link>
-        </li>
-        <li>
-          <router-link to="/works/series">Series</router-link>
-        </li>
-        <li>
-          <router-link to="/works/my-list">My List</router-link>
+        <li v-for="(link, i) in links" :key="i" @click="isActive = false">
+          <router-link :to="link.route">{{ link.name }}</router-link>
         </li>
       </ul>
     </nav>
@@ -33,6 +24,24 @@ export default {
     return {
       isActive: false,
       color: false,
+      links: [
+        {
+          route: "/",
+          name: "Home",
+        },
+        {
+          route: "/works/movies",
+          name: "Movies",
+        },
+        {
+          route: "/works/series",
+          name: "Series",
+        },
+        {
+          route: "/works/my-list",
+          name: "My List",
+        },
+      ],
     };
   },
   mounted() {
