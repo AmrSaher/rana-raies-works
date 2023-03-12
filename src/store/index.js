@@ -58,6 +58,7 @@ export default createStore({
       let epsoides = (
         JSON.parse(localStorage.getItem("continuelist")) || []
       ).reverse();
+      this.state.continueWatchingList = [];
       epsoides.forEach(async (epsoide) => {
         let workId = epsoide.split("|")[0];
         let seasonId = epsoide.split("|")[1];
