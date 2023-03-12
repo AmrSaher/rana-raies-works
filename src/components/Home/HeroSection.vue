@@ -43,23 +43,11 @@ export default {
     works() {
       return this.$store.getters.works.slice(0, 4);
     },
-    myList() {
-      return JSON.parse(localStorage.getItem("mylist")) || [];
-    },
   },
   methods: {
     nextVideo() {
       if (this.works[this.currentTrailer + 1]) this.currentTrailer++;
       else this.currentTrailer = 0;
-    },
-    addToList() {
-      let ids = JSON.parse(localStorage.getItem("mylist")) || [];
-      if (ids.includes(this.works[this.currentTrailer].id)) {
-        ids.splice(ids.indexOf(this.works[this.currentTrailer].id), 1);
-      } else {
-        ids.push(this.works[this.currentTrailer].id);
-      }
-      localStorage.setItem("mylist", JSON.stringify(ids));
     },
   },
 };

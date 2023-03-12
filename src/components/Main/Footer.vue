@@ -18,15 +18,18 @@ export default {
 <style lang="scss" scoped>
 .footer {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   background-color: #272e3a;
-  i {
-    color: red;
-  }
-  a {
-    color: var(--text-color);
-    text-decoration: underline;
+  span {
+    font-size: 16px;
+    i {
+      color: red;
+    }
+    a {
+      color: var(--text-color);
+      text-decoration: underline;
+    }
   }
 }
 </style>

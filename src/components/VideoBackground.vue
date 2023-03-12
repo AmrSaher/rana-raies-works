@@ -18,7 +18,13 @@
       ></i>
     </button>
     <button class="btn add-to-list" @click="addToList()">
-      <i v-if="work" class="bi bi-plus"></i>
+      <i
+        v-if="work"
+        :class="{
+          'bi bi-plus': !isWorkInMyList,
+          'bi bi-dash': isWorkInMyList,
+        }"
+      ></i>
     </button>
     <router-link
       v-if="work && playBtn"
@@ -40,10 +46,25 @@ export default {
   data() {
     return {
       mute: true,
+      isWorkInMyList: false,
     };
+  },
+  computed: {
+    myList() {
+      return this.$store.getters.myList;
+    },
+  },
+  watch: {
+    work() {
+      this.checkIfWorkInMyList();
+    },
+  },
+  mounted() {
+    this.checkIfWorkInMyList();
   },
   methods: {
     addToList() {
+      this.isWorkInMyList = !this.isWorkInMyList;
       let ids = JSON.parse(localStorage.getItem("mylist")) || [];
       if (ids.includes(this.work.id)) {
         ids.splice(ids.indexOf(this.work.id), 1);
@@ -52,6 +73,16 @@ export default {
       }
       localStorage.setItem("mylist", JSON.stringify(ids));
       this.$store.dispatch("getMyList");
+    },
+    checkIfWorkInMyList() {
+      for (let i = 0; i < this.myList.length; i++) {
+        let work = this.myList[i];
+        if (this.work.id == work.id) {
+          this.isWorkInMyList = true;
+          break;
+        }
+        this.isWorkInMyList = false;
+      }
     },
   },
 };

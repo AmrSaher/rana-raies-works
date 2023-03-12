@@ -43,6 +43,7 @@ export default {
     max-width: 500px;
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 10px;
     .name {
       font-size: 20px;
     }
